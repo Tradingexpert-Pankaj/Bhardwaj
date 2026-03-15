@@ -317,7 +317,7 @@ src="https://www.facebook.com/tr?id=25768920356144458&ev=PageView&noscript=1"/>
                     <div class="logo">
                         <img id="logo-image" src="Pankaj.jpg" alt="Educational Channel Logo" loading="lazy">
                     </div>
-                   <a id="telegram-link" class="cta" href="#">  Join Free Telegram </a>
+                   <a id="telegram-link" onclick="trackSubscribe()" class="cta" href="#">Join Free Telegram</a>
                     <div class="feature-card">
                        <p class="blue"><span class="emoji">📞</span> Daily Free Nifty, Banknifty, Stock Calls! 📈🔔</p>
                     </div>
@@ -353,35 +353,11 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
     
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-
-  const btn = document.getElementById("telegram-link");
-  if (!btn) return;
-
-  btn.addEventListener("click", function (e) {
-
-    // ✅ Sirf real human click
-    if (!e.isTrusted) {
-      e.preventDefault();
-      return;
-    }
-
-    // ✅ Already tracked?
-    if (localStorage.getItem("telegram_subscribed") === "true") {
-      return;
-    }
-
-    localStorage.setItem("telegram_subscribed", "true");
-
-    const eventId = "tg_sub_" + Date.now();
-
+  function trackSubscribe() {
     if (typeof fbq !== "undefined") {
-      fbq('track', 'Subscribe', {}, { eventID: eventId });
+      fbq('track', 'Subscribe');
     }
-
-  });
-
-});
+  }
 </script>
 
 </body></html>
